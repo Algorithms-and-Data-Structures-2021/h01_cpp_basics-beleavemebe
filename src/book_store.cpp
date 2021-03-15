@@ -53,8 +53,10 @@ void BookStore::AddBook(const Book &book) {
         // Tip 1: используйте функцию resize_storage_internal, задав новый размер хранилища
         // Tip 2: не забудьте обработать статус вызова функции
         if (resize_storage_internal(storage_capacity_ + kCapacityCoefficient) != ResizeStorageStatus::SUCCESS) return;
-        *(storage_ + storage_size_ + 1) = book;
+        //storage_capacity_ += kCapacityCoefficient;
     }
+    *(storage_ + storage_size_) = book;
+    storage_size_ += 1;
     // Tip 3: не забудьте добавить книгу в наше бездонное хранилище ...
 }
 
